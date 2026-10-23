@@ -19,7 +19,7 @@
   }
 
   // The download links always point at the latest release's DMG; this only adds the version.
-  fetch("https://api.github.com/repos/nk1044/earshot/releases/latest", { headers: { Accept: "application/vnd.github+json" } })
+  fetch("https://api.github.com/repos/nk1044/airlink/releases/latest", { headers: { Accept: "application/vnd.github+json" } })
     .then((response) => (response.ok ? response.json() : null))
     .then((release) => {
       if (!release || !release.tag_name) return;

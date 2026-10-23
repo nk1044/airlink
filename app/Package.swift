@@ -5,11 +5,11 @@ import PackageDescription
 let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().path
 
 let package = Package(
-    name: "Earshot",
+    name: "AirLink",
     platforms: [.macOS(.v14)],
     products: [
-        .executable(name: "Earshot", targets: ["EarshotApp"]),
-        .executable(name: "earshot-probe", targets: ["earshot-probe"]),
+        .executable(name: "AirLink", targets: ["AirLinkApp"]),
+        .executable(name: "airlink-probe", targets: ["airlink-probe"]),
     ],
     targets: [
         // Pure protocol: frames, commands, reply parsers. No Apple frameworks.
@@ -25,28 +25,28 @@ let package = Package(
             linkerSettings: [.linkedFramework("IOBluetooth")]
         ),
 
-        // The menu bar app: views only. Bundled into Earshot.app by scripts/build.sh.
+        // The menu bar app: views only. Bundled into AirLink.app by scripts/build.sh.
         .executableTarget(
-            name: "EarshotApp",
+            name: "AirLinkApp",
             dependencies: ["BudsCore", "BudsBluetooth"],
             linkerSettings: [.linkedFramework("ServiceManagement")]
         ),
 
         // Hardware probe CLI. The embedded Info.plist carries NSBluetoothAlwaysUsageDescription.
         .executableTarget(
-            name: "earshot-probe",
+            name: "airlink-probe",
             dependencies: ["BudsCore", "BudsBluetooth"],
             exclude: ["Info.plist"],
             linkerSettings: [
                 .unsafeFlags([
                     "-Xlinker", "-sectcreate", "-Xlinker", "__TEXT",
-                    "-Xlinker", "__info_plist", "-Xlinker", "\(root)/Sources/earshot-probe/Info.plist",
+                    "-Xlinker", "__info_plist", "-Xlinker", "\(root)/Sources/airlink-probe/Info.plist",
                 ]),
             ]
         ),
 
         .testTarget(name: "BudsProtocolTests", dependencies: ["BudsProtocol"]),
         .testTarget(name: "BudsCoreTests", dependencies: ["BudsCore"]),
-        .testTarget(name: "EarshotAppTests", dependencies: ["EarshotApp", "BudsCore"]),
+        .testTarget(name: "AirLinkAppTests", dependencies: ["AirLinkApp", "BudsCore"]),
     ]
 )

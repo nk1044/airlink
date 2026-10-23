@@ -1,7 +1,7 @@
 name: Release
 
-# Push a tag like v1.2.0 to build a universal Earshot.dmg and publish it as a GitHub Release.
-# The website's download button points at releases/latest/download/Earshot.dmg.
+# Push a tag like v1.2.0 to build a universal AirLink.dmg and publish it as a GitHub Release.
+# The website's download button points at releases/latest/download/AirLink.dmg.
 on:
   push:
     tags: ["v*"]
@@ -31,8 +31,8 @@ jobs:
           version="${GITHUB_REF_NAME#v}"
           sed "s/{{VERSION}}/$version/g" ../.github/release-notes.md > "$RUNNER_TEMP/notes.md"
           if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
-            gh release upload "$GITHUB_REF_NAME" dist/Earshot.dmg dist/Earshot.dmg.sha256 --clobber
+            gh release upload "$GITHUB_REF_NAME" dist/AirLink.dmg dist/AirLink.dmg.sha256 --clobber
           else
-            gh release create "$GITHUB_REF_NAME" dist/Earshot.dmg dist/Earshot.dmg.sha256 \
-              --title "Earshot $version" --notes-file "$RUNNER_TEMP/notes.md"
+            gh release create "$GITHUB_REF_NAME" dist/AirLink.dmg dist/AirLink.dmg.sha256 \
+              --title "AirLink $version" --notes-file "$RUNNER_TEMP/notes.md"
           fi

@@ -111,8 +111,8 @@ final class Probe {
     }
 
     private func connect(_ device: IOBluetoothDevice, _ profile: any DeviceProfile) async -> Bool {
-        if let app = NSRunningApplication.runningApplications(withBundleIdentifier: "io.github.nk1044.earshot").first {
-            Out.line("warning: Earshot.app is running (pid \(app.processIdentifier)). If it holds the channel, this will fail.")
+        if let app = NSRunningApplication.runningApplications(withBundleIdentifier: "io.github.nk1044.airlink").first {
+            Out.line("warning: AirLink.app is running (pid \(app.processIdentifier)). If it holds the channel, this will fail.")
         }
         let services = options.services(for: profile)
         if let channel = options.channel {

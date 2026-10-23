@@ -47,7 +47,7 @@ private final class FakeBuds {
 
 /// A throwaway defaults domain, so the remembered case level never leaks between tests.
 private func freshDefaults() -> UserDefaults {
-    let name = "earshot-tests-\(UUID().uuidString)"
+    let name = "airlink-tests-\(UUID().uuidString)"
     let defaults = UserDefaults(suiteName: name)!
     defaults.removePersistentDomain(forName: name)
     return defaults

@@ -43,7 +43,7 @@ final class StatusItemController: NSObject {
         let button = (item ?? install()).button
         let percent = preferences.showBatteryInMenuBar ? store.lowestBudPercent : nil
         button?.image = MenuBarIcon.image(batteryPercent: percent)
-        button?.setAccessibilityLabel(percent.map { "Earshot, lowest bud \($0) percent" } ?? "Earshot")
+        button?.setAccessibilityLabel(percent.map { "AirLink, lowest bud \($0) percent" } ?? "AirLink")
     }
 
     private func install() -> NSStatusItem {

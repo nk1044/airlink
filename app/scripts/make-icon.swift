@@ -1,4 +1,4 @@
-// Renders the Earshot app icon into an .icns (and optionally a 1024 px PNG).
+// Renders the AirLink app icon into an .icns (and optionally a 1024 px PNG).
 // Usage: swift scripts/make-icon.swift <output.icns> [preview.png]
 //
 // macOS icon grid: an 824 pt squircle centred on a 1024 pt canvas, with a soft drop shadow.
@@ -124,7 +124,7 @@ func render(_ pixels: Int) -> NSBitmapImageRep {
 }
 
 let fm = FileManager.default
-let iconset = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("Earshot-\(getpid()).iconset")
+let iconset = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("AirLink-\(getpid()).iconset")
 try? fm.removeItem(at: iconset)
 try fm.createDirectory(at: iconset, withIntermediateDirectories: true)
 

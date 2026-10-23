@@ -3,15 +3,15 @@ import BudsCore
 import BudsProtocol
 import SwiftUI
 import Testing
-@testable import EarshotApp
+@testable import AirLinkApp
 
 /// Renders the popover in a few states to PNGs, for eyeballing layout without hardware.
-/// Off unless EARSHOT_SNAPSHOT_DIR is set:
-///     EARSHOT_SNAPSHOT_DIR=/tmp/snaps swift test --filter Snapshot
-@Suite(.enabled(if: ProcessInfo.processInfo.environment["EARSHOT_SNAPSHOT_DIR"] != nil))
+/// Off unless AIRLINK_SNAPSHOT_DIR is set:
+///     AIRLINK_SNAPSHOT_DIR=/tmp/snaps swift test --filter Snapshot
+@Suite(.enabled(if: ProcessInfo.processInfo.environment["AIRLINK_SNAPSHOT_DIR"] != nil))
 @MainActor
 struct SnapshotTests {
-    let directory = URL(fileURLWithPath: ProcessInfo.processInfo.environment["EARSHOT_SNAPSHOT_DIR"] ?? "/tmp")
+    let directory = URL(fileURLWithPath: ProcessInfo.processInfo.environment["AIRLINK_SNAPSHOT_DIR"] ?? "/tmp")
 
     @Test func connected() async throws {
         let store = await connectedStore(battery: [0x01, 0x64, 0x02, 0x92, 0x03, 0x12], noise: 0x08)
@@ -31,13 +31,13 @@ struct SnapshotTests {
     }
 
     @Test func connecting() throws {
-        let store = DeviceStore(defaults: UserDefaults(suiteName: "earshot-snapshots-\(UUID().uuidString)")!)
+        let store = DeviceStore(defaults: UserDefaults(suiteName: "airlink-snapshots-\(UUID().uuidString)")!)
         store.deviceAppeared(profile: RealmeBudsAir6Pro()) {}
         try render(store, "connecting")
     }
 
     @Test func failed() throws {
-        let store = DeviceStore(defaults: UserDefaults(suiteName: "earshot-snapshots-\(UUID().uuidString)")!)
+        let store = DeviceStore(defaults: UserDefaults(suiteName: "airlink-snapshots-\(UUID().uuidString)")!)
         store.deviceAppeared(profile: RealmeBudsAir6Pro()) {}
         store.failed("Couldn't reach the buds.")
         try render(store, "failed")
@@ -55,7 +55,7 @@ struct SnapshotTests {
             default: return reply([0x00])
             }
         }
-        let store = DeviceStore(defaults: UserDefaults(suiteName: "earshot-snapshots-\(UUID().uuidString)")!)
+        let store = DeviceStore(defaults: UserDefaults(suiteName: "airlink-snapshots-\(UUID().uuidString)")!)
         store.deviceAppeared(profile: RealmeBudsAir6Pro()) {}
         let session = BudsSession(transport: transport, profile: RealmeBudsAir6Pro())
         await session.start()
@@ -112,7 +112,7 @@ private final class ScriptedTransport: Transport {
 }
 
 /// Renders the menu bar icon at several battery levels on light and dark menu bars, at 4×.
-@Suite(.enabled(if: ProcessInfo.processInfo.environment["EARSHOT_SNAPSHOT_DIR"] != nil))
+@Suite(.enabled(if: ProcessInfo.processInfo.environment["AIRLINK_SNAPSHOT_DIR"] != nil))
 @MainActor
 struct MenuBarIconSnapshotTests {
     @Test func icons() throws {
@@ -143,7 +143,7 @@ struct MenuBarIconSnapshotTests {
             }
         }
         canvas.unlockFocus()
-        let dir = URL(fileURLWithPath: ProcessInfo.processInfo.environment["EARSHOT_SNAPSHOT_DIR"]!)
+        let dir = URL(fileURLWithPath: ProcessInfo.processInfo.environment["AIRLINK_SNAPSHOT_DIR"]!)
         try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
         let tiff = try #require(canvas.tiffRepresentation)
         let rep = try #require(NSBitmapImageRep(data: tiff))

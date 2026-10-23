@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="website/assets/icon.png" width="128" height="128" alt="Earshot icon">
+  <img src="website/assets/icon.png" width="128" height="128" alt="AirLink icon">
 </p>
 
-<h1 align="center">Earshot</h1>
+<h1 align="center">AirLink</h1>
 
 <p align="center">
   <b>Your realme buds, right in the menu bar.</b><br>
@@ -10,31 +10,31 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/nk1044/earshot/releases/latest/download/Earshot.dmg"><b>Download Earshot.dmg</b></a> ·
-  <a href="https://nk1044.github.io/earshot/">Website</a> ·
+  <a href="https://github.com/nk1044/airlink/releases/latest/download/AirLink.dmg"><b>Download AirLink.dmg</b></a> ·
+  <a href="https://nk1044.github.io/airlink/">Website</a> ·
   <a href="app/PROTOCOL.md">Protocol notes</a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/nk1044/earshot/actions/workflows/ci.yml"><img src="https://github.com/nk1044/earshot/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
-  <a href="https://github.com/nk1044/earshot/releases/latest"><img src="https://img.shields.io/github/v/release/nk1044/earshot?label=release" alt="Latest release"></a>
+  <a href="https://github.com/nk1044/airlink/actions/workflows/ci.yml"><img src="https://github.com/nk1044/airlink/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://github.com/nk1044/airlink/releases/latest"><img src="https://img.shields.io/github/v/release/nk1044/airlink?label=release" alt="Latest release"></a>
   <img src="https://img.shields.io/badge/macOS-14%2B-black" alt="macOS 14+">
   <img src="https://img.shields.io/badge/Swift-6-orange" alt="Swift 6">
 </p>
 
 <p align="center">
-  <img src="website/assets/panel-light.png" width="300" alt="Earshot in Light Mode">
+  <img src="website/assets/panel-light.png" width="300" alt="AirLink in Light Mode">
   &nbsp;&nbsp;
-  <img src="website/assets/panel-dark.png" width="300" alt="Earshot in Dark Mode">
+  <img src="website/assets/panel-dark.png" width="300" alt="AirLink in Dark Mode">
 </p>
 
 ---
 
-Earshot is a small native menu bar app for the **realme Buds Air 6 Pro**. It stays out of the way: the icon only appears while your buds are connected to the Mac, and it disappears when they leave.
+AirLink is a small native menu bar app for the **realme Buds Air 6 Pro**. It stays out of the way: the icon only appears while your buds are connected to the Mac, and it disappears when they leave.
 
 ## Features
 
-- **Battery at a glance.** Left, right and case, as rings that are green, orange at 20 % or below, and red at 10 % or below, with a bolt while charging. Earshot never guesses a value: a bud the buds aren't reporting shows "—". The case keeps its last reported level, since the buds stop reporting it whenever the lid is closed.
+- **Battery at a glance.** Left, right and case, as rings that are green, orange at 20 % or below, and red at 10 % or below, with a bolt while charging. AirLink never guesses a value: a bud the buds aren't reporting shows "—". The case keeps its last reported level, since the buds stop reporting it whenever the lid is closed.
 - **Noise control in one click.** Noise Cancellation, Transparency or Off. The selection slides over and settles only once the buds confirm. If the buds refuse (ANC needs both buds in, the other modes need at least one), it springs back and tells you why. Long-press changes made on the buds show up too.
 - **Optional battery ring in the menu bar.** It shows the lower bud's level as a ring around the icon.
 - **Feels native.** The panel drops down like the system's Battery and Wi-Fi panels, follows Light and Dark Mode, works with VoiceOver, and respects Reduce Motion.
@@ -42,10 +42,10 @@ Earshot is a small native menu bar app for the **realme Buds Air 6 Pro**. It sta
 
 ## Install
 
-1. [Download **Earshot.dmg**](https://github.com/nk1044/earshot/releases/latest/download/Earshot.dmg), open it, and drag **Earshot** to **Applications**.
-2. Open Earshot. Because it's free and not notarized by Apple, macOS asks first: click **Done**, then go to **System Settings › Privacy & Security** and click **Open Anyway**. In Terminal, this does the same:
+1. [Download **AirLink.dmg**](https://github.com/nk1044/airlink/releases/latest/download/AirLink.dmg), open it, and drag **AirLink** to **Applications**.
+2. Open AirLink. Because it's free and not notarized by Apple, macOS asks first: click **Done**, then go to **System Settings › Privacy & Security** and click **Open Anyway**. In Terminal, this does the same:
    ```sh
-   xattr -dr com.apple.quarantine /Applications/Earshot.app
+   xattr -dr com.apple.quarantine /Applications/AirLink.app
    ```
 3. Allow Bluetooth when asked, then connect your buds to the Mac. The icon appears in the menu bar.
 
@@ -65,20 +65,20 @@ Every release is built from this repository by GitHub Actions ([release workflow
 You need the Xcode Command Line Tools (Swift 6); full Xcode isn't required. The app has no third-party dependencies.
 
 ```sh
-git clone https://github.com/nk1044/earshot.git
-cd earshot/app
+git clone https://github.com/nk1044/airlink.git
+cd airlink/app
 ./scripts/setup-signing.sh      # once: a local code-signing identity
 ./scripts/build.sh --install    # build, sign, copy to /Applications and launch
 swift test                      # unit tests
 ```
 
-**Why a signing identity?** macOS ties the Bluetooth permission to the app's signature. An ad-hoc signature changes on every build, so macOS would ask again after each rebuild. `setup-signing.sh` creates a self-signed certificate in its own keychain (`~/Library/Keychains/earshot-signing.keychain-db`, with a random password in `~/.config/earshot/`). It doesn't touch your login keychain, your trust settings or your keychain search list. To remove it:
+**Why a signing identity?** macOS ties the Bluetooth permission to the app's signature. An ad-hoc signature changes on every build, so macOS would ask again after each rebuild. `setup-signing.sh` creates a self-signed certificate in its own keychain (`~/Library/Keychains/airlink-signing.keychain-db`, with a random password in `~/.config/airlink/`). It doesn't touch your login keychain, your trust settings or your keychain search list. To remove it:
 
 ```sh
-security delete-keychain ~/Library/Keychains/earshot-signing.keychain-db && rm -r ~/.config/earshot
+security delete-keychain ~/Library/Keychains/airlink-signing.keychain-db && rm -r ~/.config/airlink
 ```
 
-`build.sh` also understands `UNIVERSAL=1` (Apple silicon and Intel), `VERSION=` and `BUILD_NUMBER=`. `scripts/make-dmg.sh` packages `build/Earshot.app` into `dist/Earshot.dmg`.
+`build.sh` also understands `UNIVERSAL=1` (Apple silicon and Intel), `VERSION=` and `BUILD_NUMBER=`. `scripts/make-dmg.sh` packages `build/AirLink.app` into `dist/AirLink.dmg`.
 
 ## Repository layout
 
@@ -88,8 +88,8 @@ app/                    the macOS app (Swift package)
     BudsProtocol/       frame codec, commands, reply/push parsers (no Apple frameworks)
     BudsCore/           device profiles, Transport protocol, BudsSession actor, DeviceStore
     BudsBluetooth/      IOBluetooth RFCOMM transport, connection lifecycle, channel lock
-    EarshotApp/         status item, panel window and SwiftUI views (no Bluetooth logic)
-    earshot-probe/      command-line protocol probe
+    AirLinkApp/         status item, panel window and SwiftUI views (no Bluetooth logic)
+    airlink-probe/      command-line protocol probe
   Tests/                protocol tests with frames captured from real buds; store and UI tests
   Packaging/            Info.plist and app icon
   scripts/              build, sign, DMG, icon and probe scripts
@@ -100,9 +100,9 @@ website/                the project website (static HTML/CSS/JS, deployed to Git
 
 ## How it works
 
-realme, OPPO and OnePlus buds share a control protocol over classic Bluetooth RFCOMM, the one their phone apps speak. Earshot implements it independently. [PROTOCOL.md](app/PROTOCOL.md) documents every fact used, where it came from, and what has been confirmed on real hardware.
+realme, OPPO and OnePlus buds share a control protocol over classic Bluetooth RFCOMM, the one their phone apps speak. AirLink implements it independently. [PROTOCOL.md](app/PROTOCOL.md) documents every fact used, where it came from, and what has been confirmed on real hardware.
 
-**Lifecycle.** At login Earshot is dormant: it holds only an IOBluetooth connect notification, and runs one check for buds that are already connected. When matching buds connect for audio, Earshot does four things:
+**Lifecycle.** At login AirLink is dormant: it holds only an IOBluetooth connect notification, and runs one check for buds that are already connected. When matching buds connect for audio, AirLink does four things:
 1. Shows its menu bar item.
 2. Waits a few seconds for macOS to finish setting up audio.
 3. Opens the control channel and reads battery, wear and noise state once.
@@ -122,7 +122,7 @@ public struct RealmeBudsAir7: DeviceProfile {
     public let id = "realme-buds-air-7"
     public let displayName = "realme Buds Air 7"
     public let namePrefixes = ["realme Buds Air7"]          // spaces and case are ignored
-    public let productIDs = ["064812"]                        // from `earshot-probe info`
+    public let productIDs = ["064812"]                        // from `airlink-probe info`
     public let identifyingService: ServiceUUID? = .opoVendor
     public let controlServices: [ServiceUUID] = [.opoVendor, .serialPort]
     public let noiseModes: [NoiseMode] = [.noiseCancellation, .transparency, .off]
@@ -136,15 +136,15 @@ Find the values with the probe rather than guessing. Then add the captured frame
 
 ## The probe
 
-`earshot-probe` talks to your buds from Terminal and prints every frame in and out. Quit Earshot first: only one process can hold the buds' control channel, and the probe tells you if Earshot has it.
+`airlink-probe` talks to your buds from Terminal and prints every frame in and out. Quit AirLink first: only one process can hold the buds' control channel, and the probe tells you if AirLink has it.
 
 ```sh
 cd app
-swift build -c release --product earshot-probe
-.build/release/earshot-probe list                 # paired devices, SDP services, RFCOMM channels
-.build/release/earshot-probe info                 # product id, firmware, wear, battery, noise
-.build/release/earshot-probe noise set anc        # off | transparency | anc | 0xNN
-.build/release/earshot-probe monitor 30           # print pushes (long-press a bud)
+swift build -c release --product airlink-probe
+.build/release/airlink-probe list                 # paired devices, SDP services, RFCOMM channels
+.build/release/airlink-probe info                 # product id, firmware, wear, battery, noise
+.build/release/airlink-probe noise set anc        # off | transparency | anc | 0xNN
+.build/release/airlink-probe monitor 30           # print pushes (long-press a bud)
 ./scripts/probe-session.sh                        # guided run, saved to probe-output.txt
 ```
 
@@ -162,8 +162,8 @@ Measured on Apple silicon, macOS 27, with the release build. Memory is the physi
 To check it on your own Mac:
 
 ```sh
-footprint $(pgrep -x Earshot) | grep phys_footprint
-top -l 6 -s 5 -pid $(pgrep -x Earshot) -stats pid,cpu,mem,threads,idlew,power
+footprint $(pgrep -x AirLink) | grep phys_footprint
+top -l 6 -s 5 -pid $(pgrep -x AirLink) -stats pid,cpu,mem,threads,idlew,power
 ```
 
 ## Releasing
@@ -172,24 +172,24 @@ top -l 6 -s 5 -pid $(pgrep -x Earshot) -stats pid,cpu,mem,threads,idlew,power
 git tag v1.1.0 && git push origin v1.1.0
 ```
 
-The [release workflow](.github/workflows/release.yml) runs the tests and builds a universal app stamped with the version. It then packages `Earshot.dmg` and publishes a GitHub Release. The website's download button always points at the latest release. Changes under `website/` deploy to GitHub Pages automatically.
+The [release workflow](.github/workflows/release.yml) runs the tests and builds a universal app stamped with the version. It then packages `AirLink.dmg` and publishes a GitHub Release. The website's download button always points at the latest release. Changes under `website/` deploy to GitHub Pages automatically.
 
 ## Troubleshooting
 
 | Symptom | Fix |
 |---|---|
-| No icon after connecting the buds | Make sure Earshot is running (`pgrep -l Earshot`) and allowed under **System Settings › Privacy & Security › Bluetooth**. The buds must be connected **to this Mac** for audio. |
-| "Couldn't reach the buds" | Click **Try Again**. Earshot restarts itself to reset macOS's Bluetooth session, which is the only fix when macOS gets stuck. |
-| "earshot-probe is using the buds" | Quit the probe, or any other app talking to the buds, then click **Try Again**. |
+| No icon after connecting the buds | Make sure AirLink is running (`pgrep -l AirLink`) and allowed under **System Settings › Privacy & Security › Bluetooth**. The buds must be connected **to this Mac** for audio. |
+| "Couldn't reach the buds" | Click **Try Again**. AirLink restarts itself to reset macOS's Bluetooth session, which is the only fix when macOS gets stuck. |
+| "airlink-probe is using the buds" | Quit the probe, or any other app talking to the buds, then click **Try Again**. |
 | Noise control springs back | The buds refuse mode changes unless they're worn: ANC needs both buds, the other modes need one. |
 | macOS asks for Bluetooth after every build | Run `scripts/setup-signing.sh` once, then rebuild. |
-| "Launch at Login" won't stay on | Approve Earshot under **System Settings › General › Login Items**. |
+| "Launch at Login" won't stay on | Approve AirLink under **System Settings › General › Login Items**. |
 
-**Logs.** Earshot logs under the subsystem `io.github.nk1044.earshot`. Hex frame logging is built in but off by default:
+**Logs.** AirLink logs under the subsystem `io.github.nk1044.airlink`. Hex frame logging is built in but off by default:
 
 ```sh
-defaults write io.github.nk1044.earshot LogFrames -bool YES     # then reconnect the buds
-log stream --level debug --predicate 'subsystem == "io.github.nk1044.earshot"'
+defaults write io.github.nk1044.airlink LogFrames -bool YES     # then reconnect the buds
+log stream --level debug --predicate 'subsystem == "io.github.nk1044.airlink"'
 ```
 
 ## Credits
@@ -203,4 +203,4 @@ Details are in [PROTOCOL.md](app/PROTOCOL.md).
 
 ---
 
-Earshot is an independent project, not affiliated with or endorsed by realme, OPPO or Apple. realme is a trademark of its owner. AirPods, Mac and macOS are trademarks of Apple Inc.
+AirLink is an independent project, not affiliated with or endorsed by realme, OPPO or Apple. realme is a trademark of its owner. AirPods, Mac and macOS are trademarks of Apple Inc.

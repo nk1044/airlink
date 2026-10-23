@@ -1,15 +1,15 @@
 #!/bin/bash
-# Guided Phase 0 probe run. Builds earshot-probe, walks through every check in PROTOCOL.md §7,
+# Guided Phase 0 probe run. Builds airlink-probe, walks through every check in PROTOCOL.md §7,
 # and saves everything to probe-output.txt for pasting back.
 set -uo pipefail
 root="$(cd "$(dirname "$0")/.." && pwd)"
 out="$root/probe-output.txt"
-step_log="$(mktemp -t earshot-probe)"
+step_log="$(mktemp -t airlink-probe)"
 trap 'rm -f "$step_log"' EXIT
 cd "$root"
 
-swift build -c release --product earshot-probe >/dev/null || { echo "build failed"; exit 1; }
-probe="$(swift build -c release --show-bin-path)/earshot-probe"
+swift build -c release --product airlink-probe >/dev/null || { echo "build failed"; exit 1; }
+probe="$(swift build -c release --show-bin-path)/airlink-probe"
 
 bold=$'\e[1m'; plain=$'\e[0m'
 
@@ -26,7 +26,7 @@ step() {
         echo
         read -r -p "  Press Enter when you've done that… " _
     fi
-    echo "\$ earshot-probe $*" | tee -a "$out"
+    echo "\$ airlink-probe $*" | tee -a "$out"
     "$probe" "$@" 2>&1 | tee -a "$out" | tee "$step_log"
     echo | tee -a "$out" >/dev/null
 }
@@ -42,7 +42,7 @@ require_connection() {
 }
 
 : >"$out"
-{ echo "earshot-probe session $(date -u +%FT%TZ)"; sw_vers; } >>"$out"
+{ echo "airlink-probe session $(date -u +%FT%TZ)"; sw_vers; } >>"$out"
 
 step "Step 1 of 9: list services" \
 "• Connect the buds to this Mac for audio (they should play sound from the Mac).

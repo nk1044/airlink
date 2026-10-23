@@ -28,7 +28,7 @@ struct PopoverView: View {
             SettingsSection(loginItem: loginItem, preferences: preferences)
                 .padding(.vertical, 6)
             PanelDivider()
-            MenuRow(title: "Quit Earshot", shortcut: "⌘Q") { NSApp.terminate(nil) }
+            MenuRow(title: "Quit AirLink", shortcut: "⌘Q") { NSApp.terminate(nil) }
                 .keyboardShortcut("q")
                 .padding(.top, 5)
                 .accessibilityHint("Closes the connection to the buds and quits")
@@ -113,7 +113,7 @@ private struct SettingsSection: View {
             ToggleRow(title: "Launch at Login",
                       isOn: Binding(get: { loginItem.isEnabled }, set: { loginItem.set($0) }))
             if loginItem.needsApproval {
-                Text("Allow Earshot in System Settings › General › Login Items.")
+                Text("Allow AirLink in System Settings › General › Login Items.")
                     .font(.system(size: 11))
                     .foregroundStyle(.secondary)
                     .padding(.bottom, 2)

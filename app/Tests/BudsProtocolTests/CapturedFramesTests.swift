@@ -2,7 +2,7 @@ import Testing
 @testable import BudsProtocol
 
 /// Frames captured from a realme Buds Air6 Pro (product id 063012, firmware 1.1.0.75) with
-/// earshot-probe on 2026-10-23, macOS 27.0.1. See PROTOCOL.md.
+/// airlink-probe on 2026-10-23, macOS 27.0.1. See PROTOCOL.md.
 @Suite struct CapturedFramesTests {
     private func decode(_ text: String) -> [Frame] {
         var decoder = FrameDecoder()

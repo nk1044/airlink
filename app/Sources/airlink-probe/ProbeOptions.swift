@@ -22,16 +22,16 @@ struct ProbeOptions {
     struct UsageError: Error, CustomStringConvertible { let description: String }
 
     static let usage = """
-    earshot-probe: talk to realme Buds Air 6 Pro over RFCOMM and print every frame in and out.
-    Quit Earshot first: only one process can hold the control channel.
+    airlink-probe: talk to realme Buds Air 6 Pro over RFCOMM and print every frame in and out.
+    Quit AirLink first: only one process can hold the control channel.
 
     USAGE
-      earshot-probe list                                  paired devices, SDP services, RFCOMM channels
-      earshot-probe info                                  product id, firmware, wear, battery, noise mode
-      earshot-probe battery                               left / right / case battery
-      earshot-probe noise get                             current noise-control mode
-      earshot-probe noise set off|transparency|anc|0xNN   change noise control, then read it back
-      earshot-probe monitor [seconds]                     print pushes (long-press a bud); default 30 s
+      airlink-probe list                                  paired devices, SDP services, RFCOMM channels
+      airlink-probe info                                  product id, firmware, wear, battery, noise mode
+      airlink-probe battery                               left / right / case battery
+      airlink-probe noise get                             current noise-control mode
+      airlink-probe noise set off|transparency|anc|0xNN   change noise control, then read it back
+      airlink-probe monitor [seconds]                     print pushes (long-press a bud); default 30 s
 
     OPTIONS
       --device <name|address>   pick a device (default: first connected device matching a profile)

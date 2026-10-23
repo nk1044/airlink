@@ -2,13 +2,13 @@ import AppKit
 import BudsCore
 import SwiftUI
 import Testing
-@testable import EarshotApp
+@testable import AirLinkApp
 
 @Suite @MainActor struct PanelLayoutTests {
     /// Regression: the hosting view used to end up twice the panel's size, showing only a corner
     /// of the content.
     @Test func contentFillsThePanelExactly() {
-        let store = DeviceStore(defaults: UserDefaults(suiteName: "earshot-layout")!)
+        let store = DeviceStore(defaults: UserDefaults(suiteName: "airlink-layout")!)
         store.deviceAppeared(profile: RealmeBudsAir6Pro()) {}
         let hosting = NSHostingView(rootView: PanelContent(store: store, loginItem: LoginItem(),
                                                            preferences: Preferences()) { _ in })

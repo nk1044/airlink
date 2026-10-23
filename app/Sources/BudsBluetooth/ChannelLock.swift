@@ -3,11 +3,11 @@ import Foundation
 
 /// Cross-process lock held while a process owns the buds' control channel.
 ///
-/// macOS gives one RFCOMM channel per service to one client, so Earshot and earshot-probe must
+/// macOS gives one RFCOMM channel per service to one client, so AirLink and airlink-probe must
 /// never compete. Both take this `flock` before opening the channel. The kernel drops it if the
 /// holder crashes. The holder writes its name and pid into the file, so the loser can say who it is.
 public final class ChannelLock: @unchecked Sendable {
-    public static let path = NSTemporaryDirectory() + "io.github.nk1044.earshot.rfcomm.lock"
+    public static let path = NSTemporaryDirectory() + "io.github.nk1044.airlink.rfcomm.lock"
 
     private let fd: Int32
     private var released = false

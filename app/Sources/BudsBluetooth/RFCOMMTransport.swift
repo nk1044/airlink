@@ -19,7 +19,7 @@ public enum RFCOMMError: Error, CustomStringConvertible {
         case .busy(let holder):
             "the control channel is already held by \(holder). Only one process can use it; quit that one first"
         case .serviceNotFound(let services):
-            "no control service in SDP records (\(services.count) records seen; run `earshot-probe list`)"
+            "no control service in SDP records (\(services.count) records seen; run `airlink-probe list`)"
         case .firmwareUpdateChannel(let name):
             "refusing to open \"\(name)\": it is the firmware-update channel"
         case .openFailed(let status):

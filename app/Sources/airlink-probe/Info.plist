@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIdentifier</key>
-	<string>io.github.nk1044.earshot.probe</string>
+	<string>io.github.nk1044.airlink.probe</string>
 	<key>CFBundleName</key>
-	<string>earshot-probe</string>
+	<string>airlink-probe</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>earshot-probe talks to your earbuds over Bluetooth to read battery and noise control.</string>
+	<string>airlink-probe talks to your earbuds over Bluetooth to read battery and noise control.</string>
 </dict>
 </plist>

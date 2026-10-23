@@ -2,13 +2,13 @@ import BudsProtocol
 import Foundation
 import os
 
-/// Unified logging under the `io.github.nk1044.earshot` subsystem.
+/// Unified logging under the `io.github.nk1044.airlink` subsystem.
 ///
 /// Frame (hex) logging is compiled in but off. Turn it on with
-/// `defaults write io.github.nk1044.earshot LogFrames -bool YES` and read it with
-/// `log stream --level debug --predicate 'subsystem == "io.github.nk1044.earshot"'`.
+/// `defaults write io.github.nk1044.airlink LogFrames -bool YES` and read it with
+/// `log stream --level debug --predicate 'subsystem == "io.github.nk1044.airlink"'`.
 public enum BudsLog {
-    public static let subsystem = "io.github.nk1044.earshot"
+    public static let subsystem = "io.github.nk1044.airlink"
     public static let connection = Logger(subsystem: subsystem, category: "connection")
     public static let ui = Logger(subsystem: subsystem, category: "ui")
     static let frames = Logger(subsystem: subsystem, category: "frames")

@@ -22,7 +22,7 @@ enum MenuBarIcon {
         if let custom = customArtwork(height: 18) {
             image = custom
         } else {
-            image = NSImage(systemSymbolName: systemSymbol, accessibilityDescription: "Earshot")?
+            image = NSImage(systemSymbolName: systemSymbol, accessibilityDescription: "AirLink")?
                 .withSymbolConfiguration(NSImage.SymbolConfiguration(pointSize: 15, weight: .regular))
         }
         image?.isTemplate = true
@@ -67,7 +67,7 @@ enum MenuBarIcon {
             return true
         }
         image.isTemplate = !isLow
-        image.accessibilityDescription = "Earshot, \(percent) percent"
+        image.accessibilityDescription = "AirLink, \(percent) percent"
         return image
     }
 
